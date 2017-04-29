@@ -37,12 +37,15 @@
 
 ### 2. MVC trong Laravel
 
-![Mô hình MVC trong Laravel](/images/MVC-Laravel.png)
-
 * Về cơ bản, Laravel đã cung cấp cho ta một mô hình MVC quá tuyệt vời, chúng ta không phải làm quá nhiều việc khi chúng ta code "PHP thuần" nữa. Với các thành phần trong mô hình MVC được đặt rất rõ ràng và người dùng dễ dàng thao tác với mô hình MVC. 
+
+![Mô hình MVC trong Laravel](/images/MVC-Laravel.png)
 
 * Trong Laravel, chúng ta hãy chú ý tới những thư mục được Laravel tạo sẵn, nơi mà chúng ta sẽ thực hiện đúng mô hình MVC.
 	* Thư mục __resources__: Đây là thư mục nơi mà chúng ta chứa các file giao diện, cụ thể là sẽ nằm trong thư mục view, Laravel cung cấp cho chúng ta thao tác gọi view rất đơn giản, nó được mặc định trong Laravel nên chúng ta không cần phải cấu hình một đường dẫn link tới thư mục này. Ngoài ra còn có các thư mục khác dùng để upload file, hoặc chứa thông tin giao diện đa ngôn ngữ và nơi chưa các file Front-end (tuy nhiên đa phần chúng ta đều để các file Front-end tại thư mục Public)
+	![Mô hình MVC trong Laravel](/images/1.png)
+	![Mô hình MVC trong Laravel](/images/2.png)
+	![Mô hình MVC trong Laravel](/images/3.png)
 
 * Laravel (phiển bản 5.4) cung cấp cho chúng thêm một thành phần khác đó chính là Route, nơi định tuyến, dẫn đường cho các HTTP Request được gửi tới nơi mà nó mong muốn. Với chức năng Route thì nó sẽ giúp cho việc quản lý các định tuyến được tốt hơn.
 
