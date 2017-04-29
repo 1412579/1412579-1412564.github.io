@@ -1,4 +1,4 @@
-# ĐỀ TÀI TÌM HIỂU Backend - Laravel Framework Version 5.4
+#Laravel Framework Version 5.4
 
 ## Thông tin nhóm
 
