@@ -4,7 +4,5 @@
 
 **|   MSSV  |        Họ Tên      | Nội Dung Đóng Góp | Đánh Giá |**
 | :--------- | :-------------------- | :------------------- | :---------- |
-| 1412579 | Hoàng Thị Bích Vân |                   |          |
-| 1412564 | Võ Hiếu Trung      |                   |          |
-
-## Sơ lược công nghệ hiện nay về Backend
+| 1412579 | Vũ Minh Trí |                   |          |
+| 1412564 | Trần Thuỳ Bích Trâm     |                   |          |
