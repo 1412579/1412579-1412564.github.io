@@ -46,6 +46,11 @@
 	![Mô hình MVC trong Laravel](/images/1.png)
 	![Mô hình MVC trong Laravel](/images/2.png)
 	![Mô hình MVC trong Laravel](/images/3.png)
+	* Thư mục __public__: đây là thư mục đúng nghĩa như cái tên của nó, __public__ là nơi ta chứa các file cần thiết, chả hạn như đối với mình thì đây là nơi mình sử dụng để chứa các file _CSS_, _JS_, và một số hình ảnh upload được mình lưu tại đây.
+	![Mô hình MVC trong Laravel](/images/5.png)
+	![Mô hình MVC trong Laravel](/images/5.png)
+
+	* Thư mục __app___- nơi chưa đựng những gì tinh tuý nhất trong Laravel: quả thật vậy, đây chính là nơi nòng cốt của 
 
 * Laravel (phiển bản 5.4) cung cấp cho chúng thêm một thành phần khác đó chính là Route, nơi định tuyến, dẫn đường cho các HTTP Request được gửi tới nơi mà nó mong muốn. Với chức năng Route thì nó sẽ giúp cho việc quản lý các định tuyến được tốt hơn.
 
