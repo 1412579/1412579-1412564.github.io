@@ -3,7 +3,7 @@
 <!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->  
 <!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->  
 <head>
-    <title>Responsive website template for documentations</title>
+    <title>1412579 - 1412564 | Seminar | Tìm hiểu Laravel Framework</title>
     <!-- Meta -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -30,6 +30,15 @@
 </head> 
 
 <body class="body-green">
+<style>
+    .center {
+    display: block;
+    margin: 0 auto;
+}
+    p{
+        text-align: justify;
+    }
+</style>
     <div class="page-wrapper">
         <!-- ******Header****** -->
         <header id="header" class="header">
@@ -57,71 +66,134 @@
                     <div class="doc-content">
                         <div class="content-inner">
                             <section id="download-section" class="doc-section">
-                                <h2 class="section-title">Download</h2>
+                                <h2 class="section-title">Giới thiệu</h2>
                                 <div class="section-block">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi nec imperdiet turpis. Curabitur aliquet pulvinar ultrices. Etiam at posuere leo. Proin ultrices ex et dapibus feugiat <a href="#">link example</a> aenean purus leo, faucibus at elit vel, aliquet scelerisque dui. Etiam quis elit euismod, imperdiet augue sit amet, imperdiet odio. Aenean sem erat, hendrerit  eu gravida id, dignissim ut ante. Nam consequat porttitor libero euismod congue. 
+                                    <p>Đây là github-page được viết bởi 1412579 - Vũ Minh Trí và 1412564 - Trần Thuỳ Bích Trâm với nội dung chính là tìm hiểu về Laravel Framework Version 5.4, tất cả nội dung tìm hiểu được tổng kết và sử dụng cho môn học Ứng dụng phân tán TH2014 do thầy Hoàng Anh Tú phụ trách. 
+                                    <br>
+                                    Khoa Công nghệ thông tin - Trường ĐH Khoa Học Tự Nhiên TPHCM
                                     </p>
-                                    <a href="http://themes.3rdwavemedia.com" class="btn btn-green" target="_blank"><i class="fa fa-download"></i> Download PrettyDocs</a>
+                                    <a href="https://github.com/boyvmt/1412579-1412564.github.io" class="btn btn-green" target="_blank"><i class="fa fa-download"></i> View on Github</a>
                                 </div>
                             </section><!--//doc-section-->
                             <section id="installation-section" class="doc-section">
-                                <h2 class="section-title">Installation</h2>
+                                <h2 class="section-title">MVC trong Laravel Framework</h2>
                                 <div id="step1"  class="section-block">
-                                    <h3 class="block-title">Step One</h3>
-                                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis.
-                                    </p>
-                                    <div class="code-block">
-                                        <h6>Default code example:</h6>
-                                        <p><code>bower install &lt;package&gt;</code></p>
-                                        <p><code>npm install &lt;package&gt;</code></p>
-                                    </div><!--//code-block-->
+                                    <h3 class="block-title">Giới thiệu về MVC</h3>
+                                    <div class="section-block">
+                                        <img src="images/MVC.png" alt="">
+
+                                        <p>
+                                            Điều đầu tiên nói đến đó chính là mô hình MVC, đây là mô hình phổ biến mà hầu hết các framework đều sử dụng, ngoài ra chúng ta còn có thể nhắc đến CodeIgniter, sử dụng MVC - một mô hình nâng cấp từ MVC. Vậy chúng ta hãy thử tìm hiểu MVC của Laravel nó như thế nào nhé!!!
+                                        </p>
+                                        <div class="col-md-12">
+                                                <h6>MVC là mô hình 3 lớp với ba thành phần chính:</h6>
+                                                <ul class="list">
+                                                    <li>Model là nơi chưa các nghiệp vụ logic, các phương thức thức xử lý, tuy nhiên đa phần model là nơi chúng ta sử dụng để truy xuất database.</li>
+                                                    <li>View là hiển thị các giao diện của website dựa vào hành động của người dùng, là chính các file HTML của chúng ta. Trong Laravel cũng có một thư mục view riêng.</li>
+                                                    <li>Controller chính là nơi nhận request của người dùng, từ đó có thể gửi lệnh cho Model hoặc View tùy vào request của người dùng.</li>
+                                                </ul>
+                                        </div>
+                                        <p>Có thể hiểu dễ hơn, Controller chính là nơi nhận lệnh từ người dùng, nếu người dùng thực hiện yêu cầu phải truy xuất xuống database, khi đó Controller sẽ gửi lệnh xuống Model, Model thực hiện yêu cầu của Controller sau đó lại ngược lại Controller, Controller nhận được dữ liệu và chuyển về View, từ đó View sẽ gửi thông tin dạng giao diện cho người dùng. Ngoài ra nếu yêu cầu không liên quan tới database thì Controller sẽ chuyển hướng thẳng về view mà không cần gửi lệnh cho Model.</p>
+                                        <p>MVC giúp cho chúng ta quản lý mã nguồn dễ hơn, dễ nâng cấp và bảo trì source code của mình, tạo ra một chuẩn giúp cho teamwork tốt hơn, thống nhất trên một khuân khổ, tránh tình trạng "râu ông này cắm cằm bà kia" khi nhiều người code một project, và nhiều hơn thế nữa</p>
+                                    </div>
                                 </div><!--//section-block-->
+
+
                                 <div id="step2"  class="section-block">
-                                    <h3 class="block-title">Step Two</h3>
-                                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.
-                                    </p>
-                                    <div class="row">
-                                        <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <h6>Un-ordered list example</h6>
-                                            <ul class="list">
-        										<li>Lorem ipsum dolor sit amet.</li>
-        										<li>Aliquam tincidunt mauris.</li>
-        										<li>Ultricies eget vel aliquam libero.
-        											<ul>
-        												<li>Turpis pulvinar</li>
-        												<li>Feugiat scelerisque</li>
-        												<li>Ut tincidunt</li>
-        											</ul>
-        										</li>
-        										<li>Pellentesque habitant morbi.</li>
-        										<li>Praesent dapibus, neque id.</li>
-        									</ul>
+                                    <h3 class="block-title">MVC trong Laravel Framework</h3>
+                                    <div class="section-block">
+                                        <p>Về cơ bản, Laravel đã cung cấp cho ta một mô hình MVC quá tuyệt vời, chúng ta không phải làm quá nhiều việc khi chúng ta code "PHP thuần" nữa. Với các thành phần trong mô hình MVC được đặt rất rõ ràng và người dùng dễ dàng thao tác với mô hình MVC. 
+                                        </p>
+                                        <img src="images/MVC-Laravel.png" class="img-responsive center" alt="">
+                                        <div class="col-md-12">
+                                                <h6>Trong Laravel, chúng ta hãy chú ý tới những thư mục được Laravel tạo sẵn, nơi mà chúng ta sẽ thực hiện đúng mô hình MVC.</h6>
+                                                <ul class="list">
+                                                    <li>
+                                                        <p>Thư mục <b>resources</b>: Đây là thư mục nơi mà chúng ta chứa các file giao diện, cụ thể là sẽ nằm trong thư mục view, Laravel cung cấp cho chúng ta thao tác gọi view rất đơn giản, nó được mặc định trong Laravel nên chúng ta không cần phải cấu hình một đường dẫn link tới thư mục này. Ngoài ra còn có các thư mục khác dùng để upload file, hoặc chứa thông tin giao diện đa ngôn ngữ và nơi chưa các file Front-end (tuy nhiên đa phần chúng ta đều để các file Front-end tại thư mục Public)</p>
+                                                        <img src="images/1.png" class="img-responsive center" alt="">
+                                                        <img src="images/2.png" class="img-responsive center" alt="">
+                                                        <img src="images/3.png" class="img-responsive center" alt="">
+                                                    </li>
+                                                    <li>
+                                                        <p>Thư mục <b>public</b>: đây là thư mục đúng nghĩa như cái tên của nó, <b>public</b> là nơi ta chứa các file cần thiết, chả hạn như đối với mình thì đây là nơi mình sử dụng để chứa các file <i>CSS</i>, <i>JS</i>, và một số hình ảnh upload được mình lưu tại đây.</p>
+                                                        <img src="images/4.png" class="img-responsive center" alt="">
+                                                        <img src="images/5.png" class="img-responsive center" alt="">
+                                                    </li>
+                                                    <li>
+                                                        <p>
+                                                            Thư mục <b>app</b> - nơi chưa đựng những gì tinh tuý nhất trong Laravel: quả thật vậy, đây chính là nơi nòng cốt của cả trang web, trong thư mục này, chúng chứa toàn bộ những những xử lý của chúng ta thông qua <i>Http\Controller</i> cũng như chứa các file <i>Model</i> giúp chúng ta thao tác cơ sở dữ liệu. Ngoài ra nó còn chứa các file Request - nơi chúng ta có thể sử dụng Validation mà Laravel cung cấp sẵn cũng như middleware giúp chúng ta thiết lập Authentication cho ứng dụng.
+                                                        </p>
+                                                        <img src="images/6.png" class="img-responsive center" alt="">
+                                                        <img src="images/7.png" class="img-responsive center" alt="">
+                                                        <img src="images/8.png" class="img-responsive center" alt="">
+                                                    </li>
+                                                </ul>
+                                                <p>Laravel (phiên bản 5.4) cung cấp cho chúng thêm một thành phần khác đó chính là Route, nơi định tuyến, dẫn đường cho các HTTP Request được gửi tới nơi mà nó mong muốn. Với thư mục Route thì nó sẽ giúp cho việc quản lý các định tuyến được tốt hơn.</p>
+                                                <p>Đối với phiên bản 5.4, Laravel đã đưa Route ra một thư mục riêng thay vì tích hợp nó vào thư mục App như phiên bản trước (cụ thể phiên bản 5.0), cùng với đó chia Route thành các file khác nhau thay vì gộp như cũ (api, channel, console, web), giúp quản lý tất cả các Route tốt hơn.</p>
                                         </div>
-                                        <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <h6>Ordered list example</h6>
-                                            <ol class="list">
-        										<li>Lorem ipsum dolor sit amet.</li>
-        										<li>Aliquam tincidunt mauris.</li>
-        										<li>Ultricies eget vel aliquam libero.
-        											<ul>
-        												<li>Turpis pulvinar</li>
-        												<li>Feugiat scelerisque</li>
-        												<li>Ut tincidunt</li>
-        											</ul>
-        										</li>
-        										<li>Pellentesque habitant morbi.</li>
-        										<li>Praesent dapibus, neque id.</li>
-        									</ol>
-                                        </div>
-                                    </div><!--//row-->
-                                </div><!--//section-block-->
-                                <div id="step3"  class="section-block">
-                                    <h3 class="block-title">Step Three</h3>
-                                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis.
-                                    </p>
+                                    </div>
                                 </div><!--//section-block-->
                             </section><!--//doc-section-->
+
                             
+
+                            <section id="icons-section" class="doc-section">
+                                <h2 class="section-title">Composer và thao tác cmd trong Laravel</h2>
+                                <div class="section-block">
+                                    <img src="images/composer.jpg" class="img-responsive center" alt=""
+                                    <p><i>Composer</i> là một công cụ cho phép chúng ta quản lý các thư viện của PHP tốt hơn, nó cho phép chúng ta tải về các gói thư viện cần thiết chỉ bằng các dòng lệnh, và sau đó nó sẽ giúp ta tải về mà không cần phải sử dụng quá nhiều thao tác. Phần này em thấy khá giống với NPM của Node, đều cho phép chúng ta tải các thư viện (module) nhanh và dễ dàng.
+                                    </p>
+                                    <p>Về cơ bản không có quá nhiều thứ để nói về <i>Composer</i>, chúng ta sử dụng nó để tải các thư viện của PHP, thay vì phải tải bằng tay, mỗi project ta sẽ phải tải về những thư viện khi chúng ta sử dụng, vì <i>Composer</i> sẽ chỉ cài đặt tại chính thư mục chứa project đó. </p>
+                                    <p>Ngoài <i>omposer</i> thì Laravel cũng cung cấp cho chúng ta một thứ khác, đó chính là <i>artisan</i>. Đây là một CLI được Laravel tích hợp giúp Lập trình viên tạo những file cần thiết cực kỳ nhanh chóng và hữu dụng khi phát triển ứng dụng. 
+                                    </p>
+                                    <p>Ví dụ một cụ thể dễ dàng, bạn hoàn toàn có thể tạo ra các file _model_ hoặc _controller_ thông qua <b>artisan</b> chả hạn. Hoặc thứ mà chúng ta hay dùng đến nhất mỗi khi phát triển một ứng dụng web đó chính là _database_, <b>artisan</b> cũng giúp chúng ta những thao tác thông qua _Migration_ để tạo và phát triển _database_ nhanh hơn. Dưới đây là một số các câu lệnh <b>artisan</b> hỗ trợ, bạn có thể kiểm tra danh sách câu lệnh này thông qua cú pháp <i><b>php artisan list</b></i></p>
+                                    <img src="images/9.png" class="img-responsive center" alt="">
+                                </div><!--//section-block-->
+                                
+                            </section><!--//doc-section-->
+
+                            <section id="video-section" class="doc-section">
+                                <h2 class="section-title">Blade Template</h2>
+                                <div class="section-block">
+                                    <h3 >Templade Engine là gì?</h3>
+                                    <p>Đơn giản Template đó chính là một mẫu ngôn ngữ trình bày, giúp chúng ta tách biệt code PHP ra khỏi code HTML.</p>
+                                    <h3>Blade Templates trong Laravel</h3>
+                                    <p>Blade là một <i>templating engine</i> đơn giản và được Laravel tích hợp vào cho mình. Ngoài việc nó cung cấp những câu lệnh trong view, nó không cấm bạn sử dụng PHP trong view như các <i>template engine</i> khác. Tất cả các views của <i>Blade</i> sẽ được compile thành mã PHP thuần, cho nên nó sẽ không làm tăng quá nhiều chi phí của ứng dụng. </p>
+                                    <h5><i>Mặc định chúng ta sẽ đặt tên cho các file dạng đuôi _*.blade.php_ (với * là tên file của bạn)</i></h5>
+                                    <h3>Chúng ta có thể làm gì với <b>Blade?</b></h3>
+                                    <p>Blade giúp ta quản lý các file view tốt hơn, khi chúng ta thiết kế view, có rất nhiều đoạn code bị lặp lại, vì vậy khi chúng ta chỉnh sửa lại một file nào đó, chúng ta buộc phải chỉnh sửa lại tất cả các view chứa nó.</p>
+                                    <p>Vì vậy Blade cung cấp cho chúng ta cơ chế <i>thừa kế template</i>, chúng ta có thể tách những đoạn code bị trùng lắp ra một file mới và bạn chỉ cần gọi file đó tại các view chúng ta sử dụng. Khi cần chỉnh sửa, ta chỉ cần chỉnh một file và tất cả các view đều được update thay vì phải chỉnh sửa toàn bộ các view.</p>
+                                    <p><i>Xét một ví dụ cơ bản về Blade Templade:</i></p>
+                                    <img src="images/10.png" class="img-responsive center" alt="">
+                                    <p>Như hình ảnh phía trên, mình đã tách <i>header</i> và <i>footer</i> của website chính ra riêng, với view <i>index.blade.php</i> đơn giản nó chỉ chứa lời gọi đến 2 file trên và <i>@yield('content')</i> là nơi được sử dụng để hiển thị dữ liệu ở một vị trí đặt trước. Chả hạn như tại view <i>home.blade.php</i> hình kế thừa view cha là <i>index.blade.php</i>, sau đó mình chỉ cần trích nội dụng cần hiển thị vào <i>@section</i>. Ở trên mình đã nói là <i>@yield</i> sẽ là nơi nội dung của những section này được hiển thị.</p>
+                                    <img src="images/11.png" class="img-responsive center" alt="">
+                                    <p>Vậy không sử dụng PHP trong view thì chúng ta hiển thị dữ liệu được query từ <i>database</i> bằng cách nào? Blade chắc chắn cung cấp cho chúng ta một chức năng giúp chúng ta làm điều này, chúng ta có thể truyền <i>dữ liệu</i> sang view tại <i>controller</i> hoặc trực tiếp tại <i>route</i>, nó sẽ giúp chúng ta quản lý dữ liệu được tốt hơn và minh bạch hơn.</p>
+                                    <p><i>Ví dụ như mình sẽ truyền biến dữ liệu <b>$product</b> sang view để hiển thị nó.</i></p>
+                                    <img src="images/12.png" class="img-responsive center" alt="">
+                                    <p style="text-align: center"><i>Truy vấn từ database tại function Homepage</i></p>
+                                    <img src="images/13.png" class="img-responsive center" alt="">
+                                    <p style="text-align: center"><i>Và hiển thị nó bằng cách <b>foreach</b> từng phần tử trong object đó</i></p>
+                                    <p>Tất nhiên bạn sẽ không bị giới hạn việc truyền bao nhiêu biến sang view, thậm chí bạn có thể sử dụng thẳng <b>cấu trúc php</b> bên trong view nếu bạn thấy cần thiết như ví dụ bên dưới chả hạn</p>
+                                    <img src="images/14.png" class="img-responsive center" alt="">
+                                    <p style="text-align: center"><i>Truy vấn từ database tại trực tiếp trong view</i></p>
+
+                                    <h3>Hiển thị dữ liệu unscape và chưa unespace</h3>
+                                    <h6>Đối với Blade Template, nó đã cung cấp cho chúng ta hai hình thức hiển thị dữ liệu.</h6>
+                                    <p>Đối với cách hiển thị dữ liệu bằng dấu <i><b>{{ }}</b></i>, mặc định dữ liệu khi sử dụng cặp dấu này sẽ được gửi qua hàm <i>htmlentities</i>, nhờ vậy mà chúng ta sẽ tránh được tấn công XSS khi kẻ xấu lợi dúng.</p>
+                                    <p>Còn khi bạn sử dụng cặp dấu <i><b>{!! !!}</b></i> thì dữ liệu sẽ không bị espace, mình thường sử dụng cặp dấu này nếu sử dụng CKeditor để soạn thảo và quản lý nội dung của website</p>
+                                    <img src="images/15.png" class="img-responsive center" alt="">
+                                    <h3>Cấu trúc điều kiện</h3>
+                                    <h6>Ngoài việc cung cấp việc kế thừa và hiển thị dữ liệu, Blade cũng đem lại cho chung ta các tiện ích cho các cấu trúc điều khiển cơ bản như cấu trúc rẽ nhánh, vòng lặp,...</h6>
+                                    <i>Dưới đây là một số ví dụ về cấu trúc điều kiện trong Blade, cũng khá đơn giản phải khôgn nào</i>
+                                    <img src="images/18.png" class="img-responsive center" alt="">
+                                    <br>
+                                    <img src="images/16.png" class="img-responsive center" alt="">
+                                    <br>
+                                    <img src="images/17.png" class="img-responsive center" alt="">
+                                </div><!--//section-block-->
+                            
+                            
+                            </section><!--//doc-section-->
                             <section id="code-section" class="doc-section">
                                 <h2 class="section-title">Code</h2>
                                 <div class="section-block">
@@ -455,58 +527,22 @@ echo $y;
                                     </div><!--//row-->
                                 </div><!--//section-block-->
                             </section><!--//doc-section-->
-                            <section id="video-section" class="doc-section">
-                                <h2 class="section-title">Video</h2>
-                                <div class="section-block">
-                                    <div class="row">
-                                        <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <h6>Responsive Video 16:9</h6>
-                                            <!-- 16:9 aspect ratio -->
-                                            <div class="embed-responsive embed-responsive-16by9">
-                                                <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/ejBkOjEG6F0?rel=0&amp;controls=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <h6>Responsive Video 4:3</h6>
-                                            <!-- 4:3 aspect ratio -->
-                                            <div class="embed-responsive embed-responsive-4by3">
-                                                <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/ejBkOjEG6F0?rel=0&amp;controls=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
-                                            </div>
-                                        </div>
-                                    </div><!--//row-->
-                                </div><!--//section-block-->
-                            <section id="icons-section" class="doc-section">
-                                <h2 class="section-title">Icons</h2>
-                                <div class="section-block">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi nec imperdiet turpis. Curabitur aliquet pulvinar ultrices. Etiam at posuere leo. Proin ultrices ex et dapibus feugiat <a href="#">link example</a> aenean purus leo, faucibus at elit vel, aliquet scelerisque dui. Etiam quis elit euismod, imperdiet augue sit amet, imperdiet odio. Aenean sem erat, hendrerit  eu gravida id, dignissim ut ante. Nam consequat porttitor libero euismod congue. 
-                                    </p>
-                                </div><!--//section-block-->
-                                <div class="section-block">
-                                    <h6>Elegant Icon Font</h6>
-                                    <a href="https://www.elegantthemes.com/blog/resources/elegant-icon-font" target="_blank"><img class="img-responsive" src="assets/images/demo/elegant-icon-font.jpg" alt="elegant icons" /></a>
-                                </div><!--//section-block-->
-                                <div class="section-block">
-                                    <h6>FontAwesome Icon Font</h6>
-                                    <a href="https://fortawesome.github.io/Font-Awesome/" target="_blank"><img class="img-responsive" src="assets/images/demo/fontawesome-icons.png" alt="fontawesome" /></a>
-                                </div><!--//section-block-->
-                                
-                            </section><!--//doc-section-->
                             
-                            </section><!--//doc-section-->
                         </div><!--//content-inner-->
                     </div><!--//doc-content-->
                     <div class="doc-sidebar hidden-xs">
                         <nav id="doc-nav">
                             <ul id="doc-menu" class="nav doc-menu" data-spy="affix">
-                                <li><a class="scrollto" href="#download-section">Download</a></li>
+                                <li><a class="scrollto" href="#download-section">Giới thiệu</a></li>
                                 <li>
-                                    <a class="scrollto" href="#installation-section">Installation</a>
+                                    <a class="scrollto" href="#installation-section">MVC trong Laravel Framework</a>
                                     <ul class="nav doc-sub-menu">
-                                        <li><a class="scrollto" href="#step1">Step One</a></li>
-                                        <li><a class="scrollto" href="#step2">Step Two</a></li>
-                                        <li><a class="scrollto" href="#step3">Step Three</a></li>
+                                        <li><a class="scrollto" href="#step1">Giới thiệu về MVC</a></li>
+                                        <li><a class="scrollto" href="#step2">MVC trong Laravel Framework</a></li>
                                     </ul><!--//nav-->
                                 </li>
+                                <li><a class="scrollto" href="#icons-section">Composer và thao tác CLI với Artisan trong Laravel</a></li>
+                                <li><a class="scrollto" href="#video-section">Blade Template</a></li>
                                 <li>
                                     <a class="scrollto" href="#code-section">Code</a>
                                     <ul class="nav doc-sub-menu">
@@ -523,8 +559,7 @@ echo $y;
                                 <li><a class="scrollto" href="#callouts-section">Callouts</a></li>
                                 <li><a class="scrollto" href="#tables-section">Tables</a></li>
                                 <li><a class="scrollto" href="#buttons-section">Buttons</a></li>
-                                <li><a class="scrollto" href="#video-section">Video</a></li>
-                                <li><a class="scrollto" href="#icons-section">Icons</a></li>
+                                
                             </ul><!--//doc-menu-->
                         </nav>
                     </div><!--//doc-sidebar-->
