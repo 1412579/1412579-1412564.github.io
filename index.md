@@ -72,8 +72,20 @@
 
 * Ngoài _composer_ thì Laravel cũng cung cấp cho chúng ta một thứ khác, đó chính là _artisan_. Đây là một CLI được Laravel tích hợp giúp Lập trình viên tạo những file cần thiết cực kỳ nhanh chóng và hữu dụng khi phát triển ứng dụng. 
 
-* Ví dụ một cụ thể dễ dàng, bạn hoàn toàn có thể tạo ra các file _model_ hoặc _controller_ thông qua __Artisan__ chả hạn. Hoặc thứ mà chúng ta hay dùng đến nhất mỗi khi phát triển một ứng dụng web đó chính là _database_, __Artisan__ cũng giúp chúng ta những thao tác thông qua _Migration_ để tạo và phát triển _database_ nhanh hơn. 
-Dưới đây là một số các câu lệnh __Artisan__ hỗ trợ, bạn có thể kiểm tra danh sách câu lệnh này thông qua cú pháp _**php artisan list**_
+* Ví dụ một cụ thể dễ dàng, bạn hoàn toàn có thể tạo ra các file _model_ hoặc _controller_ thông qua __artisan__ chả hạn. Hoặc thứ mà chúng ta hay dùng đến nhất mỗi khi phát triển một ứng dụng web đó chính là _database_, __artisan__ cũng giúp chúng ta những thao tác thông qua _Migration_ để tạo và phát triển _database_ nhanh hơn. 
+Dưới đây là một số các câu lệnh __artisan__ hỗ trợ, bạn có thể kiểm tra danh sách câu lệnh này thông qua cú pháp _**php artisan list**_
 ![Mô hình MVC trong Laravel](/images/9.png)
 
+
+### 3. Blade Templade
+
+#### Templade Engine là gì?
+
+* Đơn giản Template đó chính là một mẫu ngôn ngữ trình bày, giúp chúng ta tách biệt code PHP ra khỏi code HTML.
+
+#### Blade Templates trong Laravel
+
+* Blade là một _templating engine_ đơn giản và được Laravel tích hợp vào cho mình. Ngoài việc nó cung cấp những câu lệnh trong view, nó không cấm bạn sử dụng PHP trong view như các _template engine_ khác. Tất cả các views của _Blade_ sẽ được compile thành mã PHP thuần, cho nên nó sẽ không làm tăng quá nhiều chi phí của ứng dụng. 
+
+##### Mặc định chúng ta sẽ đặt tên cho các file dạng đuôi _*.blade.php_ (với * là tên file của bạn)
 
