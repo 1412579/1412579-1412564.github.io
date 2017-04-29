@@ -20,3 +20,4 @@
 
 ## III. Tổng hợp nội dung tìm hiểu
 1. MVC trong Laravel
+![Mô hình MVC](/images/MVC.png)
