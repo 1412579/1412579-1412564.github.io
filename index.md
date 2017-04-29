@@ -56,8 +56,24 @@
 	![Mô hình MVC trong Laravel](/images/8.png)
 
 
-* Laravel (phiển bản 5.4) cung cấp cho chúng thêm một thành phần khác đó chính là Route, nơi định tuyến, dẫn đường cho các HTTP Request được gửi tới nơi mà nó mong muốn. Với chức năng Route thì nó sẽ giúp cho việc quản lý các định tuyến được tốt hơn.
+* Laravel (phiên bản 5.4) cung cấp cho chúng thêm một thành phần khác đó chính là Route, nơi định tuyến, dẫn đường cho các HTTP Request được gửi tới nơi mà nó mong muốn. Với thư mục Route thì nó sẽ giúp cho việc quản lý các định tuyến được tốt hơn.
 
-* Đối với phiên bnả 5.4, Laravel đã đưa Route ra một thư mục riêng thay vì tích hợp nó vào thư mục App như phiên bản trước (cụ thể phiên bản 5.4), cùng với đó chia Route thành các file khác nhau thay vì gộp như cũ (api, channel, console, web), giúp quản lý tất cả các Route tốt hơn.
+* Đối với phiên bản 5.4, Laravel đã đưa Route ra một thư mục riêng thay vì tích hợp nó vào thư mục App như phiên bản trước (cụ thể phiên bản 5.0), cùng với đó chia Route thành các file khác nhau thay vì gộp như cũ (api, channel, console, web), giúp quản lý tất cả các Route tốt hơn.
+
+
+### 2. Composer và thao tác cmd trong Laravel
+
+![Composer trong Laravel](/images/composer.jpg)
+
+* _Composer_ là một công cụ cho phép chúng ta quản lý các thư viện của PHP tốt hơn, nó cho phép chúng ta tải về các gói thư viện cần thiết chỉ bằng các dòng lệnh, và sau đó nó sẽ giúp ta tải về mà không cần phải sử dụng quá nhiều thao tác. Phần này em thấy khá giống với NPM của Node, đều cho phép chúng ta tải các thư viện (module) nhanh và dễ dàng.
+
+* Về cơ bản không có quá nhiều thứ để nói về _Composer_, chúng ta sử dụng nó để tải các thư viện của PHP, thay vì phải tải bằng tay, mỗi project ta sẽ phải tải về những thư viện khi chúng ta sử dụng, vì _Composer_ sẽ chỉ cài đặt tại chính thư mục chứa project đó. 
+
+
+* Ngoài _composer_ thì Laravel cũng cung cấp cho chúng ta một thứ khác, đó chính là _artisan_. Đây là một CLI được Laravel tích hợp giúp Lập trình viên tạo những file cần thiết cực kỳ nhanh chóng và hữu dụng khi phát triển ứng dụng. 
+
+* Ví dụ một cụ thể dễ dàng, bạn hoàn toàn có thể tạo ra các file _model_ hoặc _controller_ thông qua __Artisan__ chả hạn. Hoặc thứ mà chúng ta hay dùng đến nhất mỗi khi phát triển một ứng dụng web đó chính là _database_, __Artisan__ cũng giúp chúng ta những thao tác thông qua _Migration_ để tạo và phát triển _database_ nhanh hơn. 
+Dưới đây là một số các câu lệnh __Artisan__ hỗ trợ, bạn có thể kiểm tra danh sách câu lệnh này thông qua cú pháp _**php artisan list**_
+![Mô hình MVC trong Laravel](/images/9.png)
 
 
