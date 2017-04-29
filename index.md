@@ -99,12 +99,12 @@ Dưới đây là một số các câu lệnh __artisan__ hỗ trợ, bạn có 
 
 ![Blade Templade trong Laravel](/images/10.png)
 
-* Như hình ảnh phía trên, mình đã tách _header_ và _footer_ của website chính ra riêng, với view _index.blade.php_ đơn giản nó chỉ chứa lời gọi đến 2 file trên và _@yield('content')_ là nơi được sử dụng để hiển thị dữ liệu ở một vị trí đặt trước. Chả hạn như tại view _home.blade.php_ hình kế thừa view cha là _index.blade.php_, sau đó mình chỉ cần inject một nội dụng vào _@section_. Ở trên mình đã nói là _@yield_ sẽ là nơi nội dụng của những section này được hiển thị.
+* Như hình ảnh phía trên, mình đã tách _header_ và _footer_ của website chính ra riêng, với view _index.blade.php_ đơn giản nó chỉ chứa lời gọi đến 2 file trên và _@yield('content')_ là nơi được sử dụng để hiển thị dữ liệu ở một vị trí đặt trước. Chả hạn như tại view _home.blade.php_ hình kế thừa view cha là _index.blade.php_, sau đó mình chỉ cần trích nội dụng cần hiển thị vào _@section_. Ở trên mình đã nói là _@yield_ sẽ là nơi nội dung của những section này được hiển thị.
 
 ![Blade Templade trong Laravel](/images/11.png)
 
 * Vậy không sử dụng PHP trong view thì chúng ta hiển thị dữ liệu được query từ _database_ bằng cách nào? Blade chắc chắn cung cấp cho chúng ta một chức năng giúp chúng ta làm điều này, chúng ta có thể truyền _dữ liệu_ sang view tại _controller_ hoặc trực tiếp tại _route_, nó sẽ giúp chúng ta quản lý dữ liệu được tốt hơn và minh bạch hơn.
 
 Ví dụ như mình truyền biến dữ liệu _$product_ sang view để hiển thị nó.
-![Blade Templade trong Laravel](/images/12.png)
+-> ![Blade Templade trong Laravel](/images/12.png) <-
 ![Blade Templade trong Laravel](/images/13.png)
