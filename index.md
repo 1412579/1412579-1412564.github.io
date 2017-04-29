@@ -74,8 +74,10 @@
 
 * Ví dụ một cụ thể dễ dàng, bạn hoàn toàn có thể tạo ra các file _model_ hoặc _controller_ thông qua __artisan__ chả hạn. Hoặc thứ mà chúng ta hay dùng đến nhất mỗi khi phát triển một ứng dụng web đó chính là _database_, __artisan__ cũng giúp chúng ta những thao tác thông qua _Migration_ để tạo và phát triển _database_ nhanh hơn. 
 Dưới đây là một số các câu lệnh __artisan__ hỗ trợ, bạn có thể kiểm tra danh sách câu lệnh này thông qua cú pháp _**php artisan list**_
-![Mô hình MVC trong Laravel](/images/9.png)
 
+<p align="center">
+![Mô hình MVC trong Laravel](/images/9.png)
+</p>
 
 ### 3. Blade Templade
 
@@ -97,10 +99,14 @@ Dưới đây là một số các câu lệnh __artisan__ hỗ trợ, bạn có 
 
 * Xét một ví dụ cơ bản về Blade Templade.
 
+<p align="center">
 ![Blade Templade trong Laravel](/images/10.png)
+</p>
 
 * Như hình ảnh phía trên, mình đã tách _header_ và _footer_ của website chính ra riêng, với view _index.blade.php_ đơn giản nó chỉ chứa lời gọi đến 2 file trên và _@yield('content')_ là nơi được sử dụng để hiển thị dữ liệu ở một vị trí đặt trước. Chả hạn như tại view _home.blade.php_ hình kế thừa view cha là _index.blade.php_, sau đó mình chỉ cần inject một nội dụng vào _@section_. Ở trên mình đã nói là _@yield_ sẽ là nơi nội dụng của những section này được hiển thị.
 
-![Blade Templade trong Laravel](/images/11.png)
+<p align="center">
+	![Blade Templade trong Laravel](/images/11.png)
+</p>
 
-* 
+
