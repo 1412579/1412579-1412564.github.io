@@ -19,7 +19,7 @@
 9. Nói về các package open source của Laravel
 
 ## III. Tổng hợp nội dung tìm hiểu
-1. MVC trong Laravel
+## 1. MVC trong Laravel
 ![Mô hình MVC](/images/MVC.png)
 
 * MVC là mô hình 3 lớp với ba thành phần chính:
@@ -34,4 +34,4 @@
 
 * MVC giúp cho chúng ta quản lý mã nguồn dễ hơn, dễ nâng cấp và bảo trì source code của mình, tạo ra một chuẩn giúp cho teamwork tốt hơn, thống nhất trên một khuân khổ, tránh tình trạng "râu ông này cắm cằm bà kia" khi nhiều người code một project, và nhiều hơn thế nữa
 
-2. MVC trong Laravel
+## 2. MVC trong Laravel
