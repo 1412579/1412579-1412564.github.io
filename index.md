@@ -89,3 +89,18 @@ Dưới đây là một số các câu lệnh __artisan__ hỗ trợ, bạn có 
 
 ##### Mặc định chúng ta sẽ đặt tên cho các file dạng đuôi _*.blade.php_ (với * là tên file của bạn)
 
+#### Chúng ta có thể làm gì với __Blade__?
+
+* Blade giúp ta quản lý các file view tốt hơn, khi chúng ta thiết kế view, có rất nhiều đoạn code bị lặp lại, vì vậy khi chúng ta chỉnh sửa lại một file nào đó, chúng ta buộc phải chỉnh sửa lại tất cả các view chứa nó.
+
+* Vì vậy Blade cung cấp cho chúng ta cơ chế _thừa kế template_, chúng ta có thể tách những đoạn code bị trùng lắp ra một file mới và bạn chỉ cần gọi file đó tại các view chúng ta sử dụng. Khi cần chỉnh sửa, ta chỉ cần chỉnh một file và tất cả các view đều được update thay vì phải chỉnh sửa toàn bộ các view.
+
+* Xét một ví dụ cơ bản về Blade Templade.
+
+![Blade Templade trong Laravel](/images/10.png)
+
+* Như hình ảnh phía trên, mình đã tách _header_ và _footer_ của website chính ra riêng, với view _index.blade.php_ đơn giản nó chỉ chứa lời gọi đến 2 file trên và _@yield('content')_ là nơi được sử dụng để hiển thị dữ liệu ở một vị trí đặt trước. Chả hạn như tại view _home.blade.php_ hình kế thừa view cha là _index.blade.php_, sau đó mình chỉ cần inject một nội dụng vào _@section_. Ở trên mình đã nói là _@yield_ sẽ là nơi nội dụng của những section này được hiển thị.
+
+![Blade Templade trong Laravel](/images/11.png)
+
+* 
