@@ -2,10 +2,10 @@
 
 ## I. Thông tin nhóm
 
-|   MSSV  |        Họ Tên      | Nội Dung Đóng Góp | Đánh Giá |
-| :--------- | :-------------------- | :------------------- | 
-| 1412579 | Vũ Minh Trí |                   |          |
-| 1412564 | Trần Thuỳ Bích Trâm     |        |           |          
+|   MSSV     |        Họ Tên         |    Nội Dung Đóng Góp | Đánh Giá              |
+| :--------- | :-------------------- | :------------------- |  :------------------- | 
+| 1412579    | Vũ Minh Trí           |                      |                       |
+| 1412564    | Trần Thuỳ Bích Trâm   |                      |                       |          
 
 ## II. Nội dung tìm hiểu
 1. MVC trong Laravel
