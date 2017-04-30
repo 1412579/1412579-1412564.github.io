@@ -401,6 +401,7 @@ $users = User::with('contacts', 'orders')
                                 <h2 class="section-title">Request</h2>
                                 <div class="section-block">
                                     <p>Laravel cung cấp cho bạn một <i>Request</i> thực sự rất tuyệt vời, trong bất kỳ một ứng dụng web nào, dữ liệu luôn là thứ quan trọng nhất, nó được cung cấp bởi một form HTML, và Request sẽ giúp chúng ta lấy những dữ liệu này trước khi chúng ta làm việc trên trữ liệu đó.</p>
+                                    <img src="images/request.jpg" class="img-responsive center" alt="">
                                     <div class="code-block">
                                         <h6>Một ví dụ nhỏ khi ta dùng Request để lấy dữ liệu các trường trong Form</h6>
                                         <pre><code class="language-php">
@@ -477,143 +478,161 @@ public function getUserInfo(Request $request){
 
                             </section><!--//doc-section-->
                             <section id="tables-section" class="doc-section">
-                                <h2 class="section-title">Tables</h2>
+                                <h2 class="section-title">Validation</h2>
                                 <div class="section-block">
-                                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis.
+                                    <p>Đây có lẽ một tính năng mà hầu hết các bạn đều đã từng gặp qua, có bao giờ bạn đăng ký một account Facebook chả hạn, bạn quên gõ email, Facebook sẽ báo lại cho ban ngay lập tức là bạn phải nhập Email không? Đó chính là Validation.
+                                    </p>
+                                    <p>
+                                        Validation để làm gì? Validation được tạo ra để kiểm soát thông tin người dùng nhập có chính xác hay không, để đảm bảo rằng hệ thông bạn ghi nhận không phải là thông tin rác. Người dùng có thể quên mất điền vào một chỗ nào đó, bạn sẽ phải thông báo và bắt buộc người dùng phải nhập thông tin được yêu cầu.
                                     </p>
                                 </div>
                                 <div class="section-block">
-                                    <h6>Basic Table</h6>
-                                    <div class="table-responsive">
-                                        <table class="table">
-                                            <thead>
-                                                <tr>
-                                                    <th>#</th>
-                                                    <th>First Name</th>
-                                                    <th>Last Name</th>
-                                                    <th>Username</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <th scope="row">1</th>
-                                                    <td>Mark</td>
-                                                    <td>Otto</td>
-                                                    <td>@mdo</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">2</th>
-                                                    <td>Jacob</td>
-                                                    <td>Thornton</td>
-                                                    <td>@fat</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">3</th>
-                                                    <td>Larry</td>
-                                                    <td>the Bird</td>
-                                                    <td>@twitter</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div><!--//table-responsive-->
-                                    <h6>Bordered Table</h6>
-                                    <div class="table-responsive">
-                                        <table class="table table-striped">
-                                            <thead>
-                                                <tr>
-                                                    <th>#</th>
-                                                    <th>First Name</th>
-                                                    <th>Last Name</th>
-                                                    <th>Username</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <th scope="row">1</th>
-                                                    <td>Mark</td>
-                                                    <td>Otto</td>
-                                                    <td>@mdo</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">2</th>
-                                                    <td>Jacob</td>
-                                                    <td>Thornton</td>
-                                                    <td>@fat</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">3</th>
-                                                    <td>Larry</td>
-                                                    <td>the Bird</td>
-                                                    <td>@twitter</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div><!--//table-responsive-->
-                                    <h6>Striped Table</h6>
-                                    <div class="table-responsive">
-                                        <table class="table table-bordered">
-                                            <thead>
-                                                <tr>
-                                                    <th>#</th>
-                                                    <th>First Name</th>
-                                                    <th>Last Name</th>
-                                                    <th>Username</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <th scope="row">1</th>
-                                                    <td>Mark</td>
-                                                    <td>Otto</td>
-                                                    <td>@mdo</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">2</th>
-                                                    <td>Jacob</td>
-                                                    <td>Thornton</td>
-                                                    <td>@fat</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">3</th>
-                                                    <td>Larry</td>
-                                                    <td>the Bird</td>
-                                                    <td>@twitter</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div><!--//table-responsive-->
-                                </div><!--//section-block-->
+                                    <h5>Validation trong Laravel</h5>
+                                    <p>Laravel đã cung cấp cho chúng ta một hệ thống Validation thực sự rất tuyệt vời và tiện lợi, bạn không cần phải thao tác quá nhiều hoặc viết ra những dòng code dài dòng để kiểm tra dữ liệu nữa. Laravel đã làm hết những gì bạn cần.</p>
+                                    <h5>Vậy thì chúng ta sử dụng Validation Laravel bằng cách nào?</h5>
+
+                                    <h6>Khai báo trực tiếp trong một hàm thuộc Controller</h6>
+
+                                    <p>Đây là một cách chúng ta có thể thao tác với Validation của Laravel, ta sẽ khai báo trực tiếp một validation trong chính một hàm trong Controller mà chúng ta muốn, tuy nhiên sẽ rất khó quản lý được nếu chúng ta có nhiều Validation, và bạn sẽ quên mất nó nằm ở đâu đó thì sao?</p>
+                                    <div class="code-block">
+                                        <h6>Một ví dụ về Validation trực tiếp trong hàm</h6>
+                                        <pre><code class="language-php">
+public function login(Request $request){
+    $this->validate($request,[
+        'txtUser' => 'required',
+        'txtPass' => 'required'],
+        ["txtUser.required"=>"Vui lòng nhập tài khoản",
+        "txtPass.required"=>"Vui lòng nhập mật khẩu"
+        ]);
+
+    if(Auth::guard('admin')->attempt(['username' => $request->txtUser, 'password' => $request->txtPass],$request->remember)){
+        return redirect()->intended(route('admin.dashboard'));
+    }
+    return redirect()->back()->withInput($request->only('username','remember'))->with('status', 'Tài khoản hoặc mật khẩu không chính xác!');
+}
+                                   </code></pre>
+                                    </div><!--//code-block-->
+
+                                    <div class="code-block">
+                                    <h5>Tạo một Request Validation giúp chúng ta quản lý dễ hơn</h5>
+                                    <p>Laravel cũng cung cấp cho bạn một cách khác đó chính là tạo một Request Validation, giúp bạn quản lý từng Validation thuộc từng một Form dữ liệu nào đó, tránh tình trạng bạn phải khai báo trực tiếp trong hàm, và khi khai báo riêng như thế này, bạn chỉ việc mang nó ra và có thể sử dụng ở nhiều hàm có form dữ liệu giống Request Validation này.</p>
+                                    <div class="code-block">
+                                        <h6>CLI Artisan giúp bạn tạo một Request nhanh bằng câu lệnh:</h6>
+                                        <p><code>php artisan make:request *tênrequest</code></p>
+                                    </div><!--//code-block-->
+                                        <h6>Một ví dụ về Validation bằng cách tạo một Request mới</h6>
+                                        <pre><code class="language-php">
+&lt;?php
+
+namespace App\Http\Requests;
+
+use Illuminate\Foundation\Http\FormRequest;
+
+class ProductRequest extends FormRequest
+{
+    public function authorize()
+    {
+        return true;
+    }
+
+    public function rules()
+    {
+        return [
+            'sltParent' =>'numeric|min:1',
+            'txtName' => 'required|unique:products,name',
+            'fImages' => 'required|image'
+        ];
+    }
+    public function messages(){
+        return [
+            'sltParent.min' => 'Vui lòng chọn Category chứa sản phẩm',
+            'fImages.image' => 'Vui lòng chọn file hình ảnh',
+            'txtName.required' => 'Vui lòng nhập tên sản phẩm',
+            'txtName.unique'   => 'Tên sản phẩm đã tồn tại',
+            'fImages.required' => 'Vui lòng chọn ảnh đại diện hoặc ảnh đại diện có kích thước quá lớn'  
+        ];
+    }
+}
+
+//Gọi nó tại Controller
+
+public function postAdd(ProductRequest $request){
+    $imgName = changeTitle(Input::file('fImages')->getClientOriginalName());
+    //echo $imgName;
+    $product_id = DB::table('products')->insertGetId(
+            [
+                "name" =>  $request->txtName,
+                "alias" => changeTitle($request->txtName),
+                "price" => $request->txtPrice,
+                "intro" => $request->txtIntro,
+                "content" => $request->txtContent,
+                "image" => $imgName,
+                "keywords" => $request->txtKeywords,
+                "description" => $request->txtDescription,
+                "user_id" => 1,
+                "cate_id" => $request->sltParent,
+                "created_at" =>  \Carbon\Carbon::now('Asia/Ho_Chi_Minh'),
+                "updated_at" => \Carbon\Carbon::now('Asia/Ho_Chi_Minh'),
+            ]
+        );
+
+    Input::file('fImages')->move('resources/upload/images',$imgName);
+    //echo $product_id;
+    if(Input::hasFile('fProductDetail')){
+        foreach (Input::file('fProductDetail') as $file) {
+            if(isset($file)){
+                DB::table('product_images')->insert(
+                    [
+                        "image" =>  changeTitle($file->getClientOriginalName()),
+                        "product_id" => $product_id,
+                        "created_at" =>  \Carbon\Carbon::now('Asia/Ho_Chi_Minh'),
+                        "updated_at" => \Carbon\Carbon::now('Asia/Ho_Chi_Minh'),
+                    ]
+                );
+                $file->move('resources/upload/details',changeTitle($file->getClientOriginalName()));
+            }
+        }
+        
+    }
+    return redirect()->route('admin.product.getList')->with(['flash_level'=>'success','flash_massage'=>'Đã thêm sản phẩm thành công !!!']);
+    
+}
+                                   </code></pre>
+                                    </div><!--//code-block-->
+                                </div>
+                            <h3>Vậy Validation hỗ trợ những dạng kiểm tra nào?</h3>
+                                <div class="section-block">
+                                    <p>Validation Laravel hỗ trợ rất nhiều, nó bao gồm nhiều quy tắc để bạn có thể dễ dàng quản lý dữ liệu trên Form người dùng tốt hơn, từ việc yêu cầu bắt buộc người dùng nhập thông tin, đến kiểm tra nó có phải là số hay không? Giới hạn min và max, và còn rất nhiều thứ nữa, bạn có thể tham khảo danh sách dưới đây.
+                                    </p>
+                                    <img src="images/validation.png" class="img-responsive center" alt="">
+                                    <br>
+                                    <a href="https://laravel.com/docs/5.4/validation" class="btn btn-green" target="_blank"><i class="fa fa-download"></i> Xem đầy đủ trên trang chủ Laravel</a>
+                                </div>
                             </section><!--//doc-section-->
                             <section id="buttons-section" class="doc-section">
-                                <h2 class="section-title">Buttons</h2>
+                                <h2 class="section-title">Routing trong Laravel</h2>
                                 <div class="section-block">
                                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi nec imperdiet turpis. Curabitur aliquet pulvinar ultrices. Etiam at posuere leo. Proin ultrices ex et dapibus feugiat <a href="#">link example</a> aenean purus leo, faucibus at elit vel, aliquet scelerisque dui. Etiam quis elit euismod, imperdiet augue sit amet, imperdiet odio. Aenean sem erat, hendrerit  eu gravida id, dignissim ut ante. Nam consequat porttitor libero euismod congue. 
                                     </p>
-                                    <div class="row">
-                                        <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <h6>Basic Buttons</h6>
-                                            <ul class="list list-unstyled">
-                                                <li><a href="#" class="btn btn-primary">Primary Button</a></li>
-                                                <li><a href="#" class="btn btn-green">Green Button</a></li>
-                                                <li><a href="#" class="btn btn-blue">Blue Button</a></li>
-                                                <li><a href="#" class="btn btn-orange">Orange Button</a></li>
-                                                <li><a href="#" class="btn btn-red">Red Button</a></li>
-                                            </ul>
-                                        </div>
-                                        <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <h6>CTA Buttons</h6>
-                                            <ul class="list list-unstyled">
-                                                <li><a href="#" class="btn btn-primary btn-cta"><i class="fa fa-download"></i> Download Now</a></li>
-                                                <li><a href="#" class="btn btn-green btn-cta"><i class="fa fa-code-fork"></i> Fork Now</a></li>
-                                                <li><a href="#" class="btn btn-blue btn-cta"><i class="fa fa-play-circle"></i> Find Out Now</a></li>
-                                                <li><a href="#" class="btn btn-orange btn-cta"><i class="fa fa-bug"></i> Report Bugs</a></li>
-                                                <li><a href="#" class="btn btn-red btn-cta"><i class="fa fa-exclamation-circle"></i> Submit Issues</a></li>
-                                            </ul>
-                                        </div>
-                                    </div><!--//row-->
+
                                 </div><!--//section-block-->
                             </section><!--//doc-section-->
-                            
+                            <section id="other-section" class="doc-section">
+                                <h2 class="section-title">Một số tính năng đặc biệt trong Laravel</h2>
+                                <div class="section-block">
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi nec imperdiet turpis. Curabitur aliquet pulvinar ultrices. Etiam at posuere leo. Proin ultrices ex et dapibus feugiat <a href="#">link example</a> aenean purus leo, faucibus at elit vel, aliquet scelerisque dui. Etiam quis elit euismod, imperdiet augue sit amet, imperdiet odio. Aenean sem erat, hendrerit  eu gravida id, dignissim ut ante. Nam consequat porttitor libero euismod congue. 
+                                    </p>
+
+                                </div><!--//section-block-->
+                            </section><!--//doc-section-->
+                            <section id="open-section" class="doc-section">
+                                <h2 class="section-title">Laravel sở hữu một cộng đồng Open Source cực kỳ lớn</h2>
+                                <div class="section-block">
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi nec imperdiet turpis. Curabitur aliquet pulvinar ultrices. Etiam at posuere leo. Proin ultrices ex et dapibus feugiat <a href="#">link example</a> aenean purus leo, faucibus at elit vel, aliquet scelerisque dui. Etiam quis elit euismod, imperdiet augue sit amet, imperdiet odio. Aenean sem erat, hendrerit  eu gravida id, dignissim ut ante. Nam consequat porttitor libero euismod congue. 
+                                    </p>
+
+                                </div><!--//section-block-->
+                            </section><!--//doc-section-->
                         </div><!--//content-inner-->
                     </div><!--//doc-content-->
                     <div class="doc-sidebar hidden-xs">
@@ -639,9 +658,10 @@ public function getUserInfo(Request $request){
                                     </ul><!--//nav-->
                                 </li>
                                 <li><a class="scrollto" href="#callouts-section">Request</a></li>
-                                <li><a class="scrollto" href="#tables-section">Tables</a></li>
-                                <li><a class="scrollto" href="#buttons-section">Buttons</a></li>
-                                
+                                <li><a class="scrollto" href="#tables-section">Validation</a></li>
+                                <li><a class="scrollto" href="#buttons-section">Routing trong Laravel</a></li>
+                                <li><a class="scrollto" href="#other-section">Một số tính năng đặc biệt trong Laravel</a></li>
+                                <li><a class="scrollto" href="#open-section">Cộng đồng rất lớn</a></li>
                             </ul><!--//doc-menu-->
                         </nav>
                     </div><!--//doc-sidebar-->
@@ -652,26 +672,7 @@ public function getUserInfo(Request $request){
         <div id="promo-block" class="promo-block">
             <div class="container">
                 <div class="promo-block-inner">
-                    <h3 class="promo-title text-center"><i class="fa fa-heart"></i> <a href="https://wrapbootstrap.com/theme/appkit-admin-theme-angularjs-WB051SCJ1?ref=3wm" target="_blank">AppKit - Bootstrap Angular Admin Theme for Developers</a></h3>
-                    <div class="row">
-                        <div class="figure-holder col-md-5 col-sm-6 col-xs-12">
-                            <div class="figure-holder-inner">
-                                <a href="https://wrapbootstrap.com/theme/appkit-admin-theme-angularjs-WB051SCJ1?ref=3wm" target="_blank"><img class="img-responsive" src="assets/images/demo/appkit-widgets-thumb.jpg" alt="AppKit Theme" /></a>
-                                <a class="mask" href="#hook"><i class="icon fa fa-heart pink"></i></a>
-                                
-                            </div>
-                        </div><!--//figure-holder-->
-                        <div class="content-holder col-md-7 col-sm-6 col-xs-12">
-                            <div class="content-holder-inner">
-                                <div class="desc">
-                                    <h4 class="content-title"><strong>Love this free documentation theme?</strong></h4>
-                                    <p>Check out AppKit - an Angular admin theme I created with my developer friend <a href="https://twitter.com/tnajdek">Tom Najdek</a> for developers. AppKit uses modern front-end technologies and is packed with useful components and widgets to speed up your app development.</p>
-                                    <p><strong class="highlight">[Tip for developers]:</strong> If your project is Open Source, you can use this area to promote your other projects or hold third party adverts like Bootstrap and FontAwesome do!</p>
-                                </div><!--//desc-->
-                                <div class="author"><a href="http://themes.3rdwavemedia.com">Xiaoying Riley</a></div>
-                            </div><!--//content-holder-inner-->
-                        </div><!--//content-holder-->
-                    </div><!--//row-->
+                    <h3 class="promo-title text-center"><a href="#" target="_blank">Nội dung được viết bởi Vũ Minh Trí và Trần Thuỳ Bích Trâm - HCMUS - K14</a></h3>
                 </div><!--//promo-block-inner-->  
             </div><!--//container-->
         </div><!--//promo-block-->
