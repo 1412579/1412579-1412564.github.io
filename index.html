@@ -75,6 +75,8 @@
                                     <a href="https://github.com/boyvmt/1412579-1412564.github.io" class="btn btn-green" target="_blank"><i class="fa fa-download"></i> View on Github</a>
                                 </div>
                             </section><!--//doc-section-->
+
+
                             <section id="installation-section" class="doc-section">
                                 <h2 class="section-title">MVC trong Laravel Framework</h2>
                                 <div id="step1"  class="section-block">
@@ -179,11 +181,62 @@
 
                                     <h3>Hiển thị dữ liệu unscape và chưa unespace</h3>
                                     <h6>Đối với Blade Template, nó đã cung cấp cho chúng ta hai hình thức hiển thị dữ liệu.</h6>
+                                    
                                     <p>Đối với cách hiển thị dữ liệu bằng dấu <i><b>{{ }}</b></i>, mặc định dữ liệu khi sử dụng cặp dấu này sẽ được gửi qua hàm <i>htmlentities</i>, nhờ vậy mà chúng ta sẽ tránh được tấn công XSS khi kẻ xấu lợi dúng.</p>
                                     <p>Còn khi bạn sử dụng cặp dấu <i><b>{!! !!}</b></i> thì dữ liệu sẽ không bị espace, mình thường sử dụng cặp dấu này nếu sử dụng CKeditor để soạn thảo và quản lý nội dung của website</p>
+                                    <div class="code-block">
+                                        <h6>Ví dụ</h6>
+                                        <pre><code class="language-php">
+
+The current UNIX timestamp is {{ time() }}.
+
+//unscape data
+Hello, {!! <i>$name</i> !!}.
+
+                                       </code></pre>
+                                    </div><!--//code-block-->
                                     <img src="images/15.png" class="img-responsive center" alt="">
                                     <h3>Cấu trúc điều kiện</h3>
                                     <h6>Ngoài việc cung cấp việc kế thừa và hiển thị dữ liệu, Blade cũng đem lại cho chung ta các tiện ích cho các cấu trúc điều khiển cơ bản như cấu trúc rẽ nhánh, vòng lặp,...</h6>
+                                    <div class="code-block">
+                                        <h6>Một số cấu trúc đơn giản chúng ta có thể thấy được</h6>
+                                        <pre><code class="language-php">
+//Cấu trúc rẽ nhánh
+@if (count($records) === 1)
+    I have one record!
+@elseif (count($records) > 1)
+    I have multiple records!
+@else
+    I don't have any records!
+@endif
+
+//Vòng lòng
+@for ($i = 0; $i < 10; $i++)
+    The current value is {{ $i }}
+@endfor
+
+@foreach ($users as $user)
+    <p>This is user {{ $user->id }}</p>
+@endforeach
+
+@forelse ($users as $user)
+    <li>{{ $user->name }}</li>
+@empty
+    <p>No users</p>
+@endforelse
+
+@while (true)
+    <p>I'm looping forever.</p>
+@endwhile
+
+//unlesss, nhưng mình thường dùng <i>if</i> hơn
+@unless (Auth::check())
+    You are not signed in.
+@endunless
+
+
+                                       </code></pre>
+                                    </div><!--//code-block-->
                                     <i>Dưới đây là một số ví dụ về cấu trúc điều kiện trong Blade, cũng khá đơn giản phải khôgn nào</i>
                                     <img src="images/18.png" class="img-responsive center" alt="">
                                     <br>
@@ -195,151 +248,97 @@
                             
                             </section><!--//doc-section-->
                             <section id="code-section" class="doc-section">
-                                <h2 class="section-title">Code</h2>
+                                <h2 class="section-title">Thao tác với CSDL</h2>
                                 <div class="section-block">
                                     <p>
-                                        <a href="http://prismjs.com/" target="_blank">PrismJS</a> is used as the syntax highlighter here. You can <a href="http://prismjs.com/download.html" target="_blank">build your own version</a> via their website should you need to.
+                                       Thứ quan trọng hầu như không thể thiếu trong bất cứ một ứng dụng web nào đó chính là cơ sở dữ liệu, Laravel hầu như cũng đã cung cấp cho chúng ta những gì tinh tuý nhất để giúp chúng ta nhanh chóng trong việc truy xuất và chỉnh sửa dữ liệu. 
                                     </p>
+                                    <p>Laravel sử dụng PDO để kết nối với CSDL.Ngoài ra nó còn cung cấp cho chúng ta hai kiểu truy vấn cơ sở dữ liệu đặc trưng đó là Query Builder và Eloquent ORM. Vậy sự khác nhau của nó là gì? Chúng ta cùng tìm hiểu về nó nhé!</p>
                                     
                                 </div><!--//section-block-->
                                 <div id="html" class="section-block">
-                                    
-                                    <div class="callout-block callout-success">
-                                        <div class="icon-holder">
-                                            <i class="fa fa-thumbs-up"></i>
-                                        </div><!--//icon-holder-->
-                                        <div class="content">
-                                            <h4 class="callout-title">Useful Tip:</h4>
-                                            <p>You can use this online <a href="https://mothereff.in/html-entities" target="_blank">HTML entity encoder/decoder</a> to generate your code examples.</p>
-                                        </div><!--//content-->
+                                <h3>Query Builder</h3>
+                                    <div class="section-block">
+                                    <p>Query Builder của Laravel cho phép chúng ta truy vấn cơ sở dữ liệu nhanh chóng và tiện lợi. Bạn có thể sử dụng nó để truy vấn bất kỳ cơ sở dữ liệu nào mà nó hỗ trợ.</p>
+                                    <p>Tất nhiên như trên đã nói, nó được sử dụng PDO params binding để bảo vệ ứng dụng của bạn không bị hacker xâm nhập ăn cắp hoặc phá hoại CSDL, chống lại các cuộc tấn công SQL Injection.</p>
+                                    <p>Nói nhiều như vậy, tóm gọn một phần đó chính là Query Builder có thể giúp bạn truy vấn trực tiếp CSDL mà không phải thông qua một thằng nào khác như <i>Eloquent ORM</i>, bạn sẽ không phải khai báo quá nhiều thứ, chỉ cần có CSDL là bạn có thể sử dụng nó rồi.</p>
                                     </div>
                                     <div class="code-block">
-                                        <h6>HTML Code Example</h6>
-                                        <pre><code class="language-markup">&lt;!DOCTYPE html&gt; 
-&lt;html lang=&quot;en&quot;&gt; 
-    ...
-    &lt;div class=&quot;jumbotron&quot;&gt; 
-        &lt;h1&gt;Hello, world!&lt;/h1&gt; 
-        &lt;p&gt;...&lt;/p&gt; 
-        &lt;p&gt;&lt;a class=&quot;btn btn-primary btn-lg&quot; href=&quot;#&quot; role=&quot;button&quot;&gt;Learn more&lt;/a&gt;&lt;/p&gt; 
-    &lt;/div&gt;
-    &lt;div class=&quot;jumbotron&quot;&gt; 
-        &lt;h1&gt;Hello, world!&lt;/h1&gt; 
-        &lt;p&gt;...&lt;/p&gt; 
-        &lt;p&gt;&lt;a class=&quot;btn btn-primary btn-lg&quot; href=&quot;#&quot; role=&quot;button&quot;&gt;Learn more&lt;/a&gt;&lt;/p&gt; 
-    &lt;/div&gt;
-    ...
-&lt;/html&gt;</code></pre>
+                                        <h6>Một số cú pháp đơn giản của Query Builder</h6>
+                                        <pre><code class="language-php">
+//Đây là cú pháp đơn giản nhất giúp bạn lấy toàn bộ các record trong một bảng nào đó.
+$temp = DB::table('tablename')->get();
+
+//Cú pháp đơn giản về điều kiện where
+$temp = DB::table('tablename')->where('id',$id)->get();
+
+//Kết giữa hai bảng với nhau
+$users = DB::table('users')
+            ->join('contacts', 'users.id', '=', 'contacts.user_id')
+            ->join('orders', 'users.id', '=', 'orders.user_id')
+            ->select('users.*', 'contacts.phone', 'orders.price')
+            ->get();
+//orderBy
+$users = DB::table('users')
+                ->orderBy('name', 'desc')
+                ->get();
+
+//lastest
+$user = DB::table('users')
+                ->latest()
+                ->first();
+
+//và còn rất nhiều thứ khác Query Builder hỗ trợ
+$users = DB::table('users')->count();
+
+$price = DB::table('orders')->max('price');
+
+$price = DB::table('orders')
+                ->where('finalized', 1)
+                ->avg('price');
+
+//insert dữ liệu
+DB::table('users')->insert([
+    ['email' => 'taylor@example.com', 'votes' => 0],
+    ['email' => 'dayle@example.com', 'votes' => 0]
+]);
+
+$id = DB::table('users')->insertGetId(
+    ['email' => 'john@example.com', 'votes' => 0]
+);
+
+//update 
+DB::table('users')
+            ->where('id', 1)
+            ->update(['votes' => 1]);
+
+//delete
+DB::table('users')->delete();
+
+DB::table('users')->where('votes', '>', 100)->delete();
+                                       </code></pre>
                                     </div><!--//code-block-->
+                                    <i>Một số ví dụ trong Demo</i>
+                                    <img src="images/19.png" class="img-responsive center" alt="">
+                                    <br>
+                                    <img src="images/20.png" class="img-responsive center" alt="">
+                                    <br>
+                                    <img src="images/21.png" class="img-responsive center" alt="">
+                                    <br>
+                                    <img src="images/22.png" class="img-responsive center" alt="">
                                 </div><!--//section-block-->
                                 <div id="css" class="section-block">
-                                    <div class="code-block">
-                                        <h6>CSS Code Example</h6>
-                                        <pre><code class="language-css">/* ======= Base Styling ======= */
-body {
-    font-family: 'Open Sans', arial, sans-serif; 
-    color: #333; 
-    font-size: 16px; 
-    -webkit-font-smoothing: antialiased; 
-    -moz-osx-font-smoothing: grayscale; 
-}</code></pre>
-                                    </div><!--//code-block-->
+                                <h3>Eloquent ORM</h3>
+                                    <div class="section-block">
+                                    </div>
                                 </div><!--//section-block-->
-                                <div id="less" class="section-block">
-                                    <div class="code-block">
-                                        <h6>LESS Code Example</h6>
-                                        <pre><code class="language-css">/*
-* Template Name: prettyDocs - Responsive Website Template for documentations 
-* Version: 1.0 
-* Author: Xiaoying Riley 
-* License: Creative Commons Attribution 3.0 License 
-* Twitter: @3rdwave_themes 
-* Website: http://themes.3rdwavemedia.com/ 
-*/ 
-@import &quot;mixins.less&quot;; 
-@import &quot;theme-default.less&quot;; 
-@import &quot;base.less&quot;; 
-@import &quot;doc.less&quot;; 
-@import &quot;landing.less&quot;; 
-@import &quot;responsive.less&quot;;</code></pre>
-                                    </div><!--//code-block-->
-                                </div><!--//section-block-->
-                                <div id="sass" class="section-block">
-                                    <div class="code-block">
-                                        <h6>Sass Code Example</h6>
-                                        <pre><code class="language-sass">#main {
-    $width: 5em; 
-    width: $width; 
-}
 
-#sidebar { 
-    width: $width; 
-}</code></pre>
-                                    </div><!--//code-block-->
-                                </div><!--//section-block-->
-                                <div id="javascript" class="section-block">
-                                    <div class="code-block">
-                                        <h6>JavaScript Code Example</h6>
-                                        <pre><code class="language-javascript">&lt;script&gt; 
-    function myFunction(a, b) { 
-        return a * b; 
-    } 
-    
-    document.getElementById(&quot;demo&quot;).innerHTML = myFunction(4, 3); 
-&lt;/script&gt;</code></pre>
-                                    </div><!--//code-block-->
-                                </div><!--//section-block-->
-                                <div id="python" class="section-block">
-                                    <div class="code-block">
-                                        <h6>Python Code Example</h6>
-                                        <pre><code class="language-python">&gt;&gt;&gt; x = int(input(&quot;
-Please enter an integer: &quot;)) Please enter an integer: 42 
-&gt;&gt;&gt; if x &lt; 0: 
-... x = 0 
-... print('Negative changed to zero') 
-... elif x == 0: 
-... print('Zero') 
-... elif x == 1: 
-... print('Single') 
-... else: 
-... print('More') 
-... More</code></pre>
-                                    </div><!--//code-block-->
-                                </div><!--//section-block-->
                                 <div id="php" class="section-block">
-                                    <div class="code-block">
-                                        <h6>PHP Code Example</h6>
-                                        <pre><code class="language-php">&lt;?php 
-$txt = &quot;Hello world!&quot;; 
-$x = 5; 
-$y = 10.5; 
+                                <h3>Nên chọn cái nào để sử dụng?</h3>
+                                    <div class="section-block">
+                                    </div>
+                                </div><!--//section-block-->
 
-echo $txt; 
-echo &quot;&lt;br&gt;&quot;; 
-echo $x; 
-echo &quot;&lt;br&gt;&quot;; 
-echo $y; 
-?&gt;</code></pre>
-                                    </div><!--//code-block-->
-                                </div><!--//section-block-->
-                                <div id="handlebars" class="section-block">
-                                    <div class="code-block">
-                                        <h6>Handlebars Code Example</h6>
-                                        <pre><code class="language-handlebars">Handlebars.registerHelper('list', function(items, options) { 
-  var out = &quot;&lt;ul&gt;&quot;; 
-  
-  for(var i=0, l=items.length; i&lt;l; i++) { 
-    out = out + &quot;&lt;li&gt;&quot; + options.fn(items[i]) + &quot;&lt;/li&gt;&quot;; 
-  } 
-  
-  return out + &quot;&lt;/ul&gt;&quot;; 
-});</code></pre>
-                                    </div><!--//code-block-->
-                                    <div class="code-block">
-                                        <h6>Git Code Example</h6>
-                                        <pre><code class="language-git">$ git add Documentation.txt</code></pre>
-                                    </div><!--//code-block-->
-                                </div><!--//section-block-->
                             </section><!--//doc-section-->
                             <section id="callouts-section" class="doc-section">
                                 <h2 class="section-title">Callouts</h2>
@@ -544,16 +543,12 @@ echo $y;
                                 <li><a class="scrollto" href="#icons-section">Composer và Arisan CLI</a></li>
                                 <li><a class="scrollto" href="#video-section">Blade Template</a></li>
                                 <li>
-                                    <a class="scrollto" href="#code-section">Code</a>
+                                    <a class="scrollto" href="#code-section">Thao tác với CSDL</a>
                                     <ul class="nav doc-sub-menu">
-                                        <li><a class="scrollto" href="#html">HTML</a></li>
-                                        <li><a class="scrollto" href="#css">CSS</a></li>
-                                        <li><a class="scrollto" href="#less">LESS</a></li>
-                                        <li><a class="scrollto" href="#sass">Sass</a></li>
-                                        <li><a class="scrollto" href="#javascript">JavaScript</a></li>
-                                        <li><a class="scrollto" href="#python">Python</a></li>
-                                        <li><a class="scrollto" href="#php">PHP</a></li>
-                                        <li><a class="scrollto" href="#handlebars">Handlebars</a></li>
+                                        <li><a class="scrollto" href="#html">Query Builder</a></li>
+                                        <li><a class="scrollto" href="#css">Eloquent ORM</a></li>
+                                        <li><a class="scrollto" href="#php">Nên chọn cái nào để sử dụng?</a></li>
+                                        
                                     </ul><!--//nav-->
                                 </li>
                                 <li><a class="scrollto" href="#callouts-section">Callouts</a></li>
