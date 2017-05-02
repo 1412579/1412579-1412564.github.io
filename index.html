@@ -612,17 +612,222 @@ public function postAdd(ProductRequest $request){
                             <section id="buttons-section" class="doc-section">
                                 <h2 class="section-title">Routing trong Laravel</h2>
                                 <div class="section-block">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi nec imperdiet turpis. Curabitur aliquet pulvinar ultrices. Etiam at posuere leo. Proin ultrices ex et dapibus feugiat <a href="#">link example</a> aenean purus leo, faucibus at elit vel, aliquet scelerisque dui. Etiam quis elit euismod, imperdiet augue sit amet, imperdiet odio. Aenean sem erat, hendrerit  eu gravida id, dignissim ut ante. Nam consequat porttitor libero euismod congue. 
+                                    <p>
+                                    Đúng như cái tên của nó, Route trong Laravel có vai trò định tuyến cho cả website của bạn, nó sẽ dẫn đường cho các HTTP Request được gửi từ Client đến Controller hoặc Function mà mình cần xử lý.
                                     </p>
-
+									<p>
+										Phải nói thêm đó là Route trong Laravel rất đơn giản, chúng ta không phải nhớ quá nhiều chứ, làm quá nhiều việc khi nó hầu như tối ưu hoá mọi việc cho chúng ta hết cả rồi. 
+									</p>
+									<p>
+										Như chúng ta đã biết, khi chúng ta xây dựng ứng dụng web bằng PHP thuần, việc tối ưu đường dẫn là điều phải sử dụng thường xuyên, khi bạn muốn cho website bạn "chuẩn SEO" và người dùng sẽ tìm kiếm đến nhiều hơn.
+									</p>
+									<i>Ví dụ như thế này ha, đối với PHP thuần</i>
+									<p><code>https://boyvmt.github.io/1412579-1412564.github.io/category.php?id=1&alias=day-la-san-pham-test</code></p>
+									<i>Thì với Laravel nó sẽ đẹp đẽ hơn như này chả hạn</i>
+									<p><code>https://boyvmt.github.io/1412579-1412564.github.io/category/1/day-la-san-pham-test</code></p>
+									<p>Việc sử dụng Route cũng rất đơn gian, với phiên bản 5.4 thì Laravel đã tách Route ra một thư mục riêng với cái tên <i>routes</i>, và bạn sử dụng chủ yếu file <i>web.php</i> để định tuyến cho các đường dẫn của mình</p>
                                 </div><!--//section-block-->
+                                <div class="section-block">
+                                    <h4>Một số thao tác cơ bản với Route</h4>
+                                    <div class="code-block">
+                                        <h6>Cú pháp đơn giản để tạo route</h6>
+                                        <pre><code class="language-php">
+Route::get('/', function () {
+    return 'Home';
+});
+ 
+Route::post('foo/bar', function () {
+    return 'foo/bar';
+});
+ 
+Route::put('foo/bar', function () {
+    
+});
+ 
+Route::delete('foo/bar', function () {
+    
+});
+									</code></pre>
+                                    </div><!--//code-block-->
+                                    <p>Với thao tác đơn giản như thế này, chúng ta đã tạo được route với 4 method cơ bản là mà Laravel hỗ trợ, và chúng ta sử dụng callback trực tiếp trong Route, tuy nhiên nếu vậy thì lại không đáp ứng mô hình MVC, vì vậy ta phải sử dụng một Controller để chứa hàm xử lý cho Route đó.</p>
+
+                                    <h4>Một số thao tác cơ bản với Route</h4>
+                                    <div class="code-block">
+                                        <h6>Cú pháp đơn giản để tạo route</h6>
+                                        <pre><code class="language-php">
+Route::get('/', function () {
+    return 'Home';
+});
+ 
+Route::post('foo/bar', function () {
+    return 'foo/bar';
+});
+ 
+Route::put('foo/bar', function () {
+    
+});
+ 
+Route::delete('foo/bar', function () {
+    
+});
+									</code></pre>
+                                    </div><!--//code-block-->
+                                    <p>Với thao tác đơn giản như thế này, chúng ta đã tạo được route với 4 method cơ bản là mà Laravel hỗ trợ, và chúng ta sử dụng callback trực tiếp trong Route, tuy nhiên nếu vậy thì lại không đáp ứng mô hình MVC, vì vậy ta phải sử dụng một Controller để chứa hàm xử lý cho Route đó.</p>
+                                    <p>Ngoài ra, chúng ta còn có thể đặt tên cho route đó, giúp ta quản lý tốt hơn và mỗi khi gọi chỉ cần nhớ cái tên alias mà chúng ta đã đặt là có thể sử dụng rồi.</p>
+									<div class="code-block">
+                                        <h6>Một ví dụ khác được trích từ Demo</h6>
+                                        <pre><code class="language-php">
+//as tương ứng với alias, giúp ta tạo tên cho Route đó để quản lý tốt hơn.
+//Cùng với đó là việc sử dụng một Controller riêng biệt để xử lý chức năng của route đó. 
+Route::get('/', ['as'=>'homepage','uses'=>'WelcomeController@Homepage']);
+Route::get('danh-muc/{id}/{alias}', ['as'=>'category','uses'=>'WelcomeController@Category']);
+Route::get('san-pham/{id}/{alias}', ['as'=>'productDetail','uses'=>'WelcomeController@productDetail']);
+Route::get('mua-hang/{id}/{alias}',['as' => 'shoppingCart','uses' => 'WelcomeController@shoppingCart']);
+									</code></pre>
+                                    </div><!--//code-block-->
+                                    <p>Đối với việc URL lặp đi lặp lại qúa nhiều thứ, chả hạn như <i>localhost/admin/abc</i> và <i>localhost/admin/xyz</i>, nếu viết như vậy quá mất thời gian của chúng ta, vì vậy Route trong Laravel cho phép ta sử dụng <i><b>Route group</b></i> để gom chúng lại</p>
+                                    <div class="code-block">
+                                        <h6>Một ví dụ về group được trích từ Demo</h6>
+                                        <pre><code class="language-php">
+//Chúng ta có thể lồng hai group vào với nhau
+Route::group(['prefix'=>'admin'],function(){
+    Route::get('dashboard', ['as' => 'admin.dashboard', 'uses' => 'AdminController@dashboard']);
+
+    Route::group(['prefix'=>'cate'],function(){
+        //route get list
+        Route::get('list', ['as'=>'admin.cate.getList','uses'=>'CateController@getList']);
+        //Route Add
+        Route::get('add',['as'=>'admin.cate.getAdd','uses'=>'CateController@getAdd']);
+        Route::post('add',['as'=>'admin.cate.postAdd','uses'=>'CateController@postAdd']);
+        //Route Delete
+        Route::get('delete/{id}',['as'=>'admin.cate.getDelete','uses'=>'CateController@getDelete']);
+        //Route 
+        Route::get('edit/{id}',['as'=>'admin.cate.getEdit','uses'=>'CateController@getEdit']);
+        Route::post('edit/{id}',['as'=>'admin.cate.postEdit','uses'=>'CateController@postEdit']);
+});
+									</code></pre>
+                                    </div><!--//code-block-->
+                                    <h4>Vậy chúng ta truyền tham số như thế nào?</h4>
+                                    <p>Điều này cũng đơn giản không kém, bạn sẽ có nhu cầu lấy thông tin từ URL người truy cập, có thể là id của một sản phẩm, có thể là id người dùng, slug của danh mục, vân vân...Route cho phép bạn hoàn toàn làm điều này và rất đơn giản!!</p>
+                                    <div class="code-block">
+                                        <h6>Một ví dụ truyền tham số trong Demo</h6>
+                                        <pre><code class="language-php">
+//Tham số bắt buộc
+Route::get('danh-muc/{id}/{alias}', ['as'=>'category','uses'=>'WelcomeController@Category']);
+Route::get('edit/{id}',['as'=>'admin.cate.getEdit','uses'=>'CateController@getEdit']);
+Route::post('edit/{id}',['as'=>'admin.cate.postEdit','uses'=>'CateController@postEdit']);
+
+//Đôi khi ta sẽ sử dụng route với tham số không bắt buộc, ta dùng như sau
+Route::get('user/{name?}', function ($name = null) {
+    if ($name == null)
+        //Response với trang profile của user hiện tại
+    else 
+       //Response với trang profile của user xác định theo $name
+});								</code></pre>
+                                    </div><!--//code-block-->
+                                    <h4>Ngoài ra, Route cũng cho phép ta quy định mẫu cho các tham số với Regular Expression</h4>
+                                    <div class="code-block">
+                                        <h6>Ví dụ</h6>
+                                        <pre><code class="language-php">
+Route::get('user/{name}', function ($name) {
+    // Xem tham số ở vị trí này là tên, nhận giá trị chuỗi
+})
+->where('name', '[A-Za-z]+');
+ 
+Route::get('user/{id}', function ($id) {
+    // Xem tham số ở vị trí này là id, nhận giá trị số
+})
+->where('id', '[0-9]+');
+ 
+Route::get('user/{id}/{name}', function ($id, $name) {
+    //
+})
+->where(['id' => '[0-9]+', 'name' => '[a-z]+']);						</code></pre>
+                                    </div><!--//code-block-->
+                                </div>
+                                <h4>Middleware trong Route</h4>
+                                <p>Laravel cũng cung cấp cho chúng ta cách kiểm tra người dùng hợp lệ khi truy cập vào một route nào đó, chúng ta có thể sử dụng Middleware trực tiếp trong Route, tuy nhiên vài phiên bản gần đây chúng ta sẽ khai báo construct middle tại các Controller để tối ưu và tránh các lỗi "truy cập" trái phép nếu ta thiết lập ở Route.</p>
+                                <div class="code-block">
+                                        <h6>Một ví dụ về sử dụng middleware trong route</h6>
+                                        <pre><code class="language-php">
+Route::group(['prefix'=>'admin','middleware'=>'auth'],function(){
+	Route::get('dashboard', ['as'=>'admin.dashboard','uses'=>'DeThiController@dashboard']);
+	
+	Route::group(['prefix'=>'dethi'],function(){
+	//route get list
+		Route::get('list', ['as'=>'admin.dethi.getList','uses'=>'DeThiController@getList']);
+		//Route Add
+		Route::get('add',['as'=>'admin.dethi.getAdd','uses'=>'DeThiController@getAdd']);
+		Route::post('add',['as'=>'admin.dethi.postAdd','uses'=>'DeThiController@postAdd']);
+
+		Route::get('delete/{id}',['as'=>'admin.dethi.getDelete','uses'=>'DeThiController@getDelete']);
+	});
+});
+										</code></pre>
+                                    </div><!--//code-block-->
+                                    <p>Và còn rất nhiều thứ khác mà chúng ta phải tìm hiểu như Restful API, Laravel đã cung cấp cho chúng ta 1 thao tác tạo cực nhanh với đầy đủ thao tác CRUD, và nhiều hơn thế nữa. </p>
                             </section><!--//doc-section-->
                             <section id="other-section" class="doc-section">
                                 <h2 class="section-title">Một số tính năng đặc biệt trong Laravel</h2>
                                 <div class="section-block">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi nec imperdiet turpis. Curabitur aliquet pulvinar ultrices. Etiam at posuere leo. Proin ultrices ex et dapibus feugiat <a href="#">link example</a> aenean purus leo, faucibus at elit vel, aliquet scelerisque dui. Etiam quis elit euismod, imperdiet augue sit amet, imperdiet odio. Aenean sem erat, hendrerit  eu gravida id, dignissim ut ante. Nam consequat porttitor libero euismod congue. 
+                                    <p>
+                                    Ngoài những tính năng được giới thiệu phía trên, Laravel còn rất nhiều tính năng nhỏ bên trong, tuy nhiên nó lại giúp cho chúng ta rất nhiều trong website của mình, và chúng ta không phải mất quá nhiều công sức để làm việc đó như thường phải làm khi code PHP thuần. Hoặc những công cụ giúp chúng ta thao tác nhanh với dữ liệu trong project của mình chả hạn.
                                     </p>
-
+									<h4>Tinker</h4>
+									<p>
+										Đây là một thứ khá lạ và ít người biết đến trong Laravel, mình cũng chỉ mới khám phá được nó trong một số bài tham khảo gần đây mà thôi, dù cũng đã biết Laravel một thời gian. 
+									</p>
+									<p>
+										Tinker được kích hoạt từ CLI Artisan của Laravel, nó là một <i>repl (read-eval-print loop</i>, với Tinker, nó có thể giúp ta nhanh chóng thao tác dữ liệu trong project của mình, thao tác với cả CSDL (<i>thông qua Model được khai báo</i>), ngoài chúng ta có thể viết hàm trên nó, tuy nhiên chắc không nhiều người rảnh để viết hàm trên command line đâu nhỉ? :D
+									</p>
+									<i>Chúng ta gọi Tinker bằng cú pháp</i>
+									<p><code>php artisan tinker</code></p>
+									<h5>Một số thao tác với Tinker</h5>
+									<pre><code class="language-php">
+//đếm số lượng trong bảng user
+>>> App\User::count()
+=> 2
+>>> App\Admin::count()
+=> 1
+//tạo một biến model mới
+>>> $user = new App\User
+=> App\User {#690}
+>>> $user = new App\User;
+=> App\User {#685}
+>>> $user->username = 'test'
+=> "test"
+>>> $user->passwor = Hash::make(123456)
+=> "$2y$10$R3I11/qIymzOD/KTN6BD6OeepaSKxJNRr5pjEoecQsxPRFeiD5.Te"
+>>> $user->save()
+//gặp lỗi Tinker cũng sẽ báo
+Illuminate\Database\QueryException with message 'SQLSTATE[42S22]: Column not found: 1054 Unknown column 'passwor' in 'field list' (SQL: insert into `users` (`usernam
+e`, `passwor`, `updated_at`, `created_at`) values (test, $2y$10$R3I11/qIymzOD/KTN6BD6OeepaSKxJNRr5pjEoecQsxPRFeiD5.Te, 2017-05-02 16:22:16, 2017-05-02 16:22:16))'
+>>> $user->password = Hash::make(123456)
+=> "$2y$10$dSp7UtaBR6gxpsNprz83aOPxA4QIQl2zkTLRqRPG0O.XRlYi.crMi"
+>>> $user->save()
+Illuminate\Database\QueryException with message 'SQLSTATE[42S22]: Column not found: 1054 Unknown column 'passwor' in 'field list' (SQL: insert into `users` (`usernam
+e`, `passwor`, `updated_at`, `created_at`, `password`) values (test, $2y$10$R3I11/qIymzOD/KTN6BD6OeepaSKxJNRr5pjEoecQsxPRFeiD5.Te, 2017-05-02 16:22:16, 2017-05-02 16
+:22:16, $2y$10$dSp7UtaBR6gxpsNprz83aOPxA4QIQl2zkTLRqRPG0O.XRlYi.crMi))'
+>>> $user = new App\User;
+=> App\User {#687}
+>>> $user->username = 'test'
+=> "test"
+>>> $user->password = Hash::make(123456)
+=> "$2y$10$L2y1uSyBBIoI0PIEnyu4wuuserZ3LX/JVoLOHE3NV.Kc.KjUbD8Fu"
+>>> $user->save()
+//Save user mới thành công
+Illuminate\Database\QueryException with message 'SQLSTATE[HY000]: General error: 1364 Field 'level' doesn't have a default value (SQL: insert into `users` (`username
+`, `password`, `updated_at`, `created_at`) values (test, $2y$10$L2y1uSyBBIoI0PIEnyu4wuuserZ3LX/JVoLOHE3NV.Kc.KjUbD8Fu, 2017-05-02 16:23:07, 2017-05-02 16:23:07))'
+>>> $user->level = 0
+=> 0
+>>> $user->save()
+=> true
+//bảng user đã tăng lên 1 sau khi ta save
+>>> App\User::count()
+=> 3
+									</code></pre>
+									<h4>Migration</h4>
+									<p>Đây cũng là điều thứ hai mình</p>
                                 </div><!--//section-block-->
                             </section><!--//doc-section-->
                             <section id="open-section" class="doc-section">
