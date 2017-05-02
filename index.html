@@ -782,7 +782,7 @@ Route::group(['prefix'=>'admin','middleware'=>'auth'],function(){
 									</p>
 									<i>Chúng ta gọi Tinker bằng cú pháp</i>
 									<p><code>php artisan tinker</code></p>
-									<h5>Một số thao tác với Tinker</h5>
+									<h6>Một số thao tác với Tinker</h6>
 									<pre><code class="language-php">
 //đếm số lượng trong bảng user
 >>> App\User::count()
@@ -827,15 +827,158 @@ Illuminate\Database\QueryException with message 'SQLSTATE[HY000]: General error:
 => 3
 									</code></pre>
 									<h4>Migration</h4>
-									<p>Đây cũng là điều thứ hai mình</p>
+									<p>Đây cũng là điều thứ hai mình muốn nói đến với các tính năng đặc biệt của Laravel, Migration cho phép bạn thao tác với cơ sở dữ liệu rất tuyệt vời, bạn không phải làm quá nhiều việc với phpMyađmin.</p>
+									<p>
+										Nói nhiều như vậy rồi rốt cuộc Migration giúp ta làm cái gì? Nó cho phép bạn tạo, xoá, rollback, refresh,...và nhiều hơn thế nữa.
+									</p>
+									<h6>Bạn có thể tham khảo một số lệnh của Migration dưới đây</h6>
+									<pre><code class="language-php"></code>
+ php artisan
+      migrate
+      migrate:rollback
+      migrate:status
+      migrate:reset
+      migrate:refresh
+      migrate:install
+      make:migration
+									</pre>
+								<p>Vậy ta hãy thử tìm hiểu cách tạo một bảng thông qua Migration nhé</p>
+								<i>Trước tiên hãy tạo một migration nhờ vào câu lệnh CLI Artisan cung cấp</i>
+								<p><code>
+									php artisan make:migration *tablename
+								</code></p>
+								<i>Sau khi lệnh được thực thi và thông báo thành công, thì chúng ta hãy vào  folder <b>database\migration</b> để kiểm tra và thực hiện tạo bảng nhé!</i>
+								<h6>Đây là thông tin bảng users mình tạo ra</h6>
+								<pre><code class="language-php">
+&lt;?php
+
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
+
+class CreateUsersTable extends Migration {
+
+	/**
+	 * Run the migrations.
+	 *
+	 * @return void
+	 */
+	public function up()
+	{
+		Schema::create('users', function(Blueprint $table)
+		{
+			$table->increments('id')->unique();
+			$table->string('username');
+			$table->string('password', 60);
+			$table->string('email')->unique();
+			$table->tinyInteger('level');
+			$table->rememberToken();
+			$table->timestamps();
+		});
+	}
+
+	/**
+	 * Reverse the migrations.
+	 *
+	 * @return void
+	 */
+	public function down()
+	{
+		Schema::drop('users');
+	}
+
+}
+								</code></pre>
+								<h6>Còn đây là đối với bảng products</h6>
+								<pre><code class="language-php">
+&lt;?php
+
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
+
+class CreateProductsTable extends Migration {
+
+	/**
+	 * Run the migrations.
+	 *
+	 * @return void
+	 */
+	public function up()
+	{
+		Schema::create('products', function(Blueprint $table)
+		{
+			$table->increments('id');
+			$table->string('name')->unique();
+			$table->string('alias');
+			$table->integer('price');
+			$table->text('intro');
+			$table->longText('content');
+			$table->string('image');
+			$table->string('keywords');
+			$table->string('description');
+			//khai báo khoá ngoại
+			$table->integer('user_id')->unsigned();
+			$table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+			$table->integer('cate_id')->unsigned();
+			//khai báo khoá ngoại
+			$table->foreign('cate_id')->references('id')->on('cates')->onDelete('cascade');
+			$table->timestamps();
+		});
+	}
+
+	/**
+	 * Reverse the migrations.
+	 *
+	 * @return void
+	 */
+	public function down()
+	{
+		Schema::drop('products');
+	}
+
+}
+
+								</code></pre>
+								<p>Class này có 2 function là up() và down().
+
+Function up() sẽ được gọi khi bạn chạy lệnh php artisan migrate còn function down() sẽ được gọi khi bạn chạy lệnh php artisan migrate:rollback .</p>
+								<i>Bước cuối cùng bạn chỉ cần thực hiện thao tác migrate nó vào database thôi, tuy nhiên hãy nhớ rằng, hãy tạo những bảng cha trước các bảng con, vì nếu chúng ta không làm vậy khi migrate sẽ gặp lỗi đứa con (khoá ngoại) không biết cha mình là ai đó nhé :D</i>
+								<p><code>php artisan migrate</code></p>
+								<h3>Auto pagination</h3>
+								<p>Một trong những điều quan trọng nhất khi chúng ta xây dựng một website đó là việc chúng phân trang ra sau nếu như chúng ta có hàng trăm, hàng ngàn record. Đối với khi code PHP thuần, ta phải đếm trang, rồi select từng trang và chia trang sao cho giao diện hợp lý. Rất mất thời giản phải không, đối với Laravel điều này thật dễ dàng.</p>
+								<i>Hãy xem cùng mình nhé</i>
+								<pre><code class="language-php">
+//đây là cách chúng ta phân trang khi query
+//lấy danh sách các sản phẩm liền quan tới sản phẩm hiện tại
+public function productDetail($id,$alias){
+    $product_detail = DB::table('products')->where('id',$id)->first();
+    $images = DB::table('product_images')->select('id','image')->where('product_id',$id)->get();
+    //Hiện số trang
+    $related = DB::table('products')->where('cate_id',$product_detail->cate_id)->where('id','<>',$id)->paginate(2);
+	
+	//chỉ hiện nút Next và Pre
+	$related = DB::table('products')->where('cate_id',$product_detail->cate_id)->where('id','<>',$id)->simplePaginate(2);
+
+    return view('users.pages.detail',compact('product_detail','images','related'));
+}
+//Và cách chúng ta phân trang như thế nào?
+//Chúng ta chỉ cần tìm 1 chỗ hợp lý và sử dụng hàm này thôi
+{{ $related->links() }}
+								</code></pre>
+								<h6>Và đây là kết quả chúng ta được, hơi vỡ giao diện tí thui :D</h6>
+								<img src="images/24.png" class="img-responsive center" alt="">
                                 </div><!--//section-block-->
                             </section><!--//doc-section-->
                             <section id="open-section" class="doc-section">
                                 <h2 class="section-title">Laravel sở hữu một cộng đồng Open Source cực kỳ lớn</h2>
                                 <div class="section-block">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi nec imperdiet turpis. Curabitur aliquet pulvinar ultrices. Etiam at posuere leo. Proin ultrices ex et dapibus feugiat <a href="#">link example</a> aenean purus leo, faucibus at elit vel, aliquet scelerisque dui. Etiam quis elit euismod, imperdiet augue sit amet, imperdiet odio. Aenean sem erat, hendrerit  eu gravida id, dignissim ut ante. Nam consequat porttitor libero euismod congue. 
+                                    <p>Chúng ta đã biết rằng, Laravel là Framework PHP được các lập trình viên đánh giá tốt nhất và phổ biến nhất thế giới trong những năm qua, một phần vì nó rất tuyệt vời, còn phần khác đó chính là nó có một cộng đồng lập trình viên rất lớn và rất nhiều lập trình viên support cho em nó.
                                     </p>
-
+									<img src="images/laravel.jpg" class="img-responsive 
+									center" alt="">
+									<p>Như mình đã nói tới, vì cộng đồng rất lớn nên số lượng package open source rất nhiều, bạn không cần phải quá biết nhiều, hoặc bạn không có nhiều thời gian để thực hiện phần đó, bạn có thể dễ dàng tìm kiếm một package hỗ trợ bạn làm việc đó.</p>
+									<p>Như mình chả với, với website demo của mình hiện tại, mình có một package hỗ trợ tạo nhanh một <i>Giỏ hàng - Shopping Cart</i> chỉ vài thao tác cơ bản, bạn không phải quá mất thời gian để xây dựng lại một hệ thống riêng dành cho bạn. Chi tiết package đó bạn có thể xem <a href="https://github.com/Crinsane/LaravelShoppingcart" target="_blank">TẠI ĐÂY</a></p>
+									<h5>Tóm lại</h5>
+									<p>Laravel Framework là một framework rất dễ học và dễ làm việc với nó, đây là framework khởi đầu cho những bạn đã từng tiếp xúc với PHP và muốn bước qua một framework mới. </p>
                                 </div><!--//section-block-->
                             </section><!--//doc-section-->
                         </div><!--//content-inner-->
